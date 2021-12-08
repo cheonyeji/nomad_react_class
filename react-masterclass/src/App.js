@@ -1,5 +1,8 @@
 import styled, { keyframes } from "styled-components";
 
+const Wrapper = styled.div`
+  display: flex;
+`;
 const rotateAni = keyframes`
   0% {
     transform: rotate(0deg);
@@ -18,10 +21,28 @@ const Box = styled.div`
   width: 200px;
   background-color: tomato;
   animation: ${rotateAni} 1s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    font-size: 36px;
+    &:hover {
+      font-size: 48px;
+    }
+    &:active {
+      opacity: 0;
+    }
+  }
 `;
 
 function App() {
-  return <Box />;
+  return (
+    <Wrapper>
+      <Box>
+        <span>🤩</span>
+      </Box>
+    </Wrapper>
+  );
 }
 
 export default App;
