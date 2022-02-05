@@ -150,11 +150,11 @@ function Coin() {
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
   const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(
-    coinId,
+    ["info", coinId],
     () => fetchCoinInfo(coinId)
   );
   const { isLoading: priceLoading, data: priceData } = useQuery<PriceData>(
-    coinId,
+    ["tickers", coinId],
     () => fetchCoinTickers(coinId)
   );
   const loading = infoLoading || priceLoading;
