@@ -21,9 +21,18 @@ const Container = styled.div`
 
 const Header = styled.header`
   height: 10vh;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
+`;
+
+const HeaderDiv = styled.div`
+  a {
+    font-weight: 400;
+  }
+  a:hover {
+    color: ${(props) => props.theme.accentColor};
+  }
 `;
 
 const Loader = styled.div`
@@ -170,6 +179,9 @@ function Coin() {
         </title>
       </Helmet>
       <Header>
+        <HeaderDiv>
+          <Link to={"/"}>Home</Link>
+        </HeaderDiv>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}{" "}
         </Title>
