@@ -1,5 +1,8 @@
 import { atom, selector } from "recoil";
 
+let saved = localStorage.getItem("ToDos");
+let localData = JSON.parse(saved as any);
+
 export enum Categories {
   "TO_DO" = "TO_DO",
   "DOING" = "DOING",
@@ -14,7 +17,7 @@ export interface IToDo {
 
 export const toDoState = atom<IToDo[]>({
   key: "toDo",
-  default: [],
+  default: localData?.length > 0 ? localData : [],
 });
 
 export const categoryState = atom<Categories>({

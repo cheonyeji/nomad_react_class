@@ -14,20 +14,24 @@ function ToDo({ text, id, category }: IToDo) {
     setToDos((oldToDos) => {
       const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
       const newToDo = { text, id, category: name as any };
-      return [
+      const finalToDos = [
         ...oldToDos.slice(0, targetIndex),
         newToDo,
         ...oldToDos.slice(targetIndex + 1),
       ];
+      localStorage.setItem("ToDos", JSON.stringify(finalToDos));
+      return finalToDos;
     });
   };
   const handleDelete = () => {
     setToDos((oldToDos) => {
       const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
-      return [
+      const finalToDos = [
         ...oldToDos.slice(0, targetIndex),
         ...oldToDos.slice(targetIndex + 1),
       ];
+      localStorage.setItem("ToDos", JSON.stringify(finalToDos));
+      return finalToDos;
     });
   };
   return (
